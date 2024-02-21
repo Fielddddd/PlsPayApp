@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Some basic styling for demonstration purposes */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        form {
+            display: inline-block;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required><br>
+        <input type="password" id="password" placeholder="Password" required><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        // Dummy user credentials for demonstration
+        const users = [
+            { username: 'user1', password: 'password1' },
+            { username: 'user2', password: 'password2' },
+            { username: 'user3', password: 'password3' }
+        ];
+
+        // Function to handle form submission
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Check if the provided username and password match any user
+            const user = users.find(user => user.username === username && user.password === password);
+
+            if (user) {
+                alert('Login successful! Welcome, ' + user.username);
+                // You can redirect to another page or perform other actions here after successful login
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        }
+
+        // Attach an event listener to the form for submission handling
+        document.getElementById('loginForm').addEventListener('submit', handleLogin);
+    </script>
+</body>
+</html>
